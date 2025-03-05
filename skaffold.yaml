@@ -1,0 +1,18 @@
+apiVersion: skaffold/v4beta9
+kind: Config
+metadata:
+  name: nx-demo
+build:
+  artifacts:
+    - image: nx-demo
+      docker:
+        dockerfile: ./apps/nx-demo/Dockerfile
+    - image: apps-programmes-api
+      docker:
+        dockerfile: ./apps/programmes-api/Dockerfile
+  local:
+    push: false
+manifests:
+  rawYaml:
+    - apps/nx-demo/deployment.yaml
+    - apps/programmes-api/deployment.yaml

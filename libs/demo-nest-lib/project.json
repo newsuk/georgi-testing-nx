@@ -1,0 +1,9 @@
+{
+  "name": "demo-nest-lib",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/demo-nest-lib/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project demo-nest-lib --web",
+  "targets": {}
+}

@@ -1,5 +1,10 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "cache": true
+    }
+  },
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
@@ -37,7 +42,7 @@
       "options": {
         "targetName": "test"
       },
-      "exclude": ["apps/nx-demo-e2e/**/*"]
+      "exclude": ["apps/nx-demo-e2e/**/*", "apps/programmes-api-e2e/**/*"]
     }
   ]
 }
