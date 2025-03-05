@@ -32,6 +32,11 @@ jobs:
       # Nx Affected runs only tasks affected by the changes in this PR/commit. Learn more: https://nx.dev/ci/features/affected
       - setup_remote_docker
       - run: npx nx affected -t lint test skaffold-build
+      - run: 
+          name: Show output
+          command: |
+            cat dist/artifact_nx-demo.json
+            cat dist/artifact_programmes-api.json
 
 workflows:
   version: 2
