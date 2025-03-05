@@ -19,7 +19,6 @@
     ],
     "sharedGlobals": ["{workspaceRoot}/.circleci/config.yml"]
   },
-  "nxCloudId": "67c1a5db65fffd49243e009b",
   "plugins": [
     {
       "plugin": "@nx/webpack/plugin",
