@@ -3,6 +3,8 @@ kind: Config
 metadata:
   name: nx-demo
 build:
+  tagPolicy:
+    gitCommit: {}
   artifacts:
     - image: nx-demo
       docker:
