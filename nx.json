@@ -3,6 +3,9 @@
   "targetDefaults": {
     "build": {
       "cache": true
+    },
+    "lint": {
+      "cache": true
     }
   },
   "namedInputs": {
