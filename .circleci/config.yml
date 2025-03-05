@@ -35,8 +35,8 @@ jobs:
       - run: 
           name: Show output
           command: |
-            cat dist/artifact_nx-demo.json
-            cat dist/artifact_programmes-api.json
+            cat dist/artifact_nx-demo.json || True
+            cat dist/artifact_programmes-api.json || True
 
 workflows:
   version: 2
