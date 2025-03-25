@@ -38,12 +38,6 @@
       "options": {
         "passWithNoTests": true
       }
-    },
-    "skaffold-build": {
-      "dependsOn": [
-        "build"
-      ],
-      "command": "skaffold build --build-image=nx-demo --quiet > dist/artifact_nx-demo.json"
     }
   }
 }

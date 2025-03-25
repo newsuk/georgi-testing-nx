@@ -38,12 +38,6 @@
       "options": {
         "passWithNoTests": true
       }
-    },
-    "skaffold-build": {
-      "dependsOn": [
-        "build"
-      ],
-      "command": "skaffold build --build-image=apps-programmes-api --quiet > dist/artifact_programmes-api.json"
     }
   }
 }
