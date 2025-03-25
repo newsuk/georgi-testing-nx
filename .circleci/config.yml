@@ -38,7 +38,7 @@ jobs:
       - run:
           name: Run app build
           command: |
-            npx nx affected -t build:production
+            npx nx affected -t build --configuration production
       - run:
           name: Build
           command: |
