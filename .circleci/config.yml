@@ -36,6 +36,10 @@ jobs:
           command: |
             npx nx affected -t lint test
       - run:
+          name: Run app build
+          command: |
+            npx nx affected -t build:production
+      - run:
           name: Build
           command: |
             npm run build:images
