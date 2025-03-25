@@ -16,7 +16,7 @@ metadata:
   labels:
     app: apps-nx-demo
 spec:
-  replicas: 1
+  replicas: {{ .Values.nx_demo.replicaCount }}
   selector:
     matchLabels:
       app: apps-nx-demo
@@ -27,4 +27,5 @@ spec:
     spec:
       containers:
       - name: apps-nx-demo
-        image: apps-nx-demo
+        image: "{{.Values.nx_demo.image.repository }}:{{ default .Chart.AppVersion .Values.nx_demo.image.tag }}"
+

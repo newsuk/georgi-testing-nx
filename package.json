@@ -2,7 +2,10 @@
   "name": "@nx-demo/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build:images": "export AFFECTED=\"$(npx nx show projects --affected -t build | paste -sd \",\" -)\" && echo $AFFECTED && skaffold build -b \"$AFFECTED\" --quiet > artifacts.json",
+    "deploy:images": "export AFFECTED=\"$(npx nx show projects --affected -t build | paste -sd \",\" -)\" && echo $AFFECTED && skaffold deploy -m \"$AFFECTED\" --build-artifacts=artifacts.json -p $PROFILE"
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^10.0.2",

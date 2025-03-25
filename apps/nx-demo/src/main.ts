@@ -16,7 +16,9 @@ async function bootstrap() {
   await app.listen(port);
   const result = demoNestLib();
   Logger.log(`🚀 ${result}`);
-  Logger.log(`🚀 Appplication is running on: http://localhost:${port}/${globalPrefix}`);
+  Logger.log(
+    `🚀 Appplication is running on: http://localhost:${port}/${globalPrefix}`
+  );
 }
 
 bootstrap();

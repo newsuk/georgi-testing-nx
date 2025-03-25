@@ -1,20 +1,92 @@
-apiVersion: skaffold/v4beta9
+apiVersion: skaffold/v2beta25
 kind: Config
-metadata:
-  name: nx-demo
-build:
-  tagPolicy:
-    gitCommit: {}
-  artifacts:
-    - image: nx-demo
-      docker:
-        dockerfile: ./apps/nx-demo/Dockerfile
-    - image: apps-programmes-api
-      docker:
-        dockerfile: ./apps/programmes-api/Dockerfile
-  local:
-    push: false
-manifests:
-  rawYaml:
-    - apps/nx-demo/deployment.yaml
-    - apps/programmes-api/deployment.yaml
+requires:
+  - configs: ["nx-demo"]
+    path: apps/nx-demo/skaffold.yaml
+  - configs: ["programmes-api"]
+    path: apps/programmes-api/skaffold.yaml
+
+# apiVersion: skaffold/v4beta9
+# kind: Config
+# metadata:
+#   name: nx-demo
+# build:
+#   tagPolicy:
+#     gitCommit: {}
+#   artifacts:
+#     - image: nx-demo
+#       docker:
+#         dockerfile: ./apps/nx-demo/Dockerfile
+#   local:
+#     push: false
+
+# manifests:
+#    kustomize:
+#       paths:
+#        - apps/nx-demo/k8s/dev
+# deploy:
+#   kubectl: {}
+
+# ---
+
+# apiVersion: skaffold/v4beta9
+# kind: Config
+# metadata:
+#   name: programmes-api
+# build:
+#   tagPolicy:
+#     gitCommit: {}
+#   artifacts:
+#     - image: programmes-api
+#       docker:
+#         dockerfile: ./apps/programmes-api/Dockerfile
+#   local:
+#     push: false
+
+# manifests:
+#    kustomize:
+#       paths:
+#        - apps/programmes-api/k8s/dev
+
+# profiles:
+#   - name: staging
+#     manifests:
+#       kustomize:
+#         paths:
+#           - apps/programmes-api/k8s/staging
+# deploy:
+#   kubectl: {}
+
+# deploy:
+#   helm:
+#     releases:
+#     - name: nx-demo
+#       chartPath: apps/nx-demo/chart
+#       setValueTemplates:
+#         nx_demo.image.repository: "{{.IMAGE_REPO_nx_demo}}"
+#         nx_demo.image.tag: "{{.IMAGE_TAG_nx_demo}}"
+#     - name: programmes-api
+#       chartPath: apps/programmes-api/chart
+#       setValueTemplates:
+#         programmes_api.image.repository: "{{.IMAGE_REPO_apps_programmes_api}}"
+#         programmes_api.image.tag: "{{.IMAGE_TAG_apps_programmes_api}}"
+
+# profiles:
+#   - name: dev
+#     deploy:
+#       helm:
+#         releases:
+#         - name: nx-demo
+#           chartPath: apps/nx-demo/chart
+#           setValueTemplates:
+#             nx_demo.image.repository: "{{.IMAGE_REPO_nx_demo}}"
+#             nx_demo.image.tag: "{{.IMAGE_TAG_nx_demo}}"
+#           valuesFiles:
+#             - apps/nx-demo/chart/values-dev.yaml
+#         - name: programmes-api
+#           chartPath: apps/programmes-api/chart
+#           setValueTemplates:
+#             programmes_api.image.repository: "{{.IMAGE_REPO_apps_programmes_api}}"
+#             programmes_api.image.tag: "{{.IMAGE_TAG_apps_programmes_api}}"
+#           valuesFiles:
+#             - apps/programmes-api/chart/values-dev.yaml

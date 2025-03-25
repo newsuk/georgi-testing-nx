@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apps-nx-demo
+  labels:
+    app: apps-nx-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apps-nx-demo
+  template:
+    metadata:
+      labels:
+        app: apps-nx-demo
+    spec:
+      containers:
+      - name: apps-nx-demo
+        image: nx-demo
